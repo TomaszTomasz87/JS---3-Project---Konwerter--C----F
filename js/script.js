@@ -18,4 +18,17 @@ const swap = () => {
 		two.textContent = '°F'
 	}
 }
+const fahrToCenc = () => {
+	fahrenheit = converter.value * 1.8 + 32
+	result.textContent = `${converter.value}°C to ${fahrenheit.toFixed(1)}°F`
+	converter.value = ''
+}
+const celcToFahr = () => {
+	celsius = (converter.value - 32) / 1.8 
+	result.textContent = `${converter.value}°F to ${celsius.toFixed(1)}°C`
+	converter.value = ''
+}
+
 changeBtn.addEventListener('click', swap)
+
+convBtn.addEventListener('click', celcToFahr)
