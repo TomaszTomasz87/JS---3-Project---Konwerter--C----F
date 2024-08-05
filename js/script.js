@@ -13,9 +13,11 @@ const swap = () => {
 	if (one.textContent === '°C') {
 		one.textContent = '°F'
 		two.textContent = '°C'
+		result.textContent = ''
 	} else {
 		one.textContent = '°C'
 		two.textContent = '°F'
+		result.textContent = ''
 	}
 }
 const fahrToCenc = () => {
@@ -24,11 +26,28 @@ const fahrToCenc = () => {
 	converter.value = ''
 }
 const celcToFahr = () => {
-	celsius = (converter.value - 32) / 1.8 
+	celsius = (converter.value - 32) / 1.8
 	result.textContent = `${converter.value}°F to ${celsius.toFixed(1)}°C`
 	converter.value = ''
+}
+const conversion = () => {
+	if (converter.value !== '') {
+		if (one.textContent === '°C') {
+			fahrToCenc()
+		} else {
+			celcToFahr()
+		}
+	} else {
+		result.textContent = 'Podaj wartość !'
+	}
+}
+const reset = () => {
+	converter.value = ''
+	result.textContent = ''
 }
 
 changeBtn.addEventListener('click', swap)
 
-convBtn.addEventListener('click', celcToFahr)
+convBtn.addEventListener('click', conversion)
+
+resetBtn.addEventListener('click', reset)
